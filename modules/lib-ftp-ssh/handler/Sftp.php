@@ -130,6 +130,14 @@ class Sftp implements \LibFtp\Iface\Handler
     public function unlink(string $path): bool{
         return $this->_bool('rm -v "' . $path . '"');
     }
+
+    public function upload(string $path, string $source, string $type='text', int $pos=0): bool{
+        $parent = dirname($path);
+        if(!$this->mkdir($parent))
+            return false;
+
+        return ssh2_scp_send($this->conn, $source, $path);
+    }
     
     public function write(string $path, $content, string $type='text', int $pos=0): bool{
         $parent = dirname($path);
