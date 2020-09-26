@@ -2,7 +2,7 @@
 
 return [
     '__name' => 'lib-ftp-ssh',
-    '__version' => '0.0.1',
+    '__version' => '0.0.2',
     '__git' => 'git@github.com:getmim/lib-ftp-ssh.git',
     '__license' => 'MIT',
     '__author' => [

@@ -78,6 +78,10 @@ class Sftp implements \LibFtp\Iface\Handler
         $cmd = 'cp -v "' . $source . '" "' . $target . '"';
         return $this->_bool($cmd);
     }
+
+    public function download(string $source, string $target, string $type='text', int $pos=0): bool{
+        return ssh2_scp_recv($this->conn, $source, $target);
+    }
     
     public function exists(string $path): bool{
         return $this->_bool('ls -d "' . $path . '"');
